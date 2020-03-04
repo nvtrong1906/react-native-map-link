@@ -10,6 +10,7 @@ export function generatePrefixes (options) {
   return {
     'apple-maps': isIOS ? 'http://maps.apple.com/' : 'applemaps://',
     'google-maps': prefixForGoogleMaps(options.alwaysIncludeGoogle),
+    'baidu-maps': 'baidumap://',
     citymapper: 'citymapper://',
     uber: 'uber://',
     lyft: 'lyft://',
@@ -33,6 +34,7 @@ export function generateTitles (titles) {
   return {
     'apple-maps': 'Apple Maps',
     'google-maps': 'Google Maps',
+    'baidu-maps': 'Baidu Maps',
     citymapper: 'Citymapper',
     uber: 'Uber',
     lyft: 'Lyft',
@@ -50,6 +52,7 @@ export function generateTitles (titles) {
 export const icons = {
   'apple-maps': require('./images/apple-maps.png'),
   'google-maps': require('./images/google-maps.png'),
+  'baidu-maps': require('./images/baidu.png'),
   citymapper: require('./images/citymapper.png'),
   uber: require('./images/uber.png'),
   lyft: require('./images/lyft.png'),

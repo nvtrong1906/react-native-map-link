@@ -88,6 +88,10 @@ export async function showLocation (options) {
       url += (options.googlePlaceId) ? `&query_place_id=${options.googlePlaceId}` : ''
       url += (useSourceDestiny) ? `&saddr=${sourceLatLng}&daddr=${latlng}` : `&ll=${latlng}`
       break
+    case 'baidu-maps':
+      url = prefixes['baidu-maps'] + `/map/direction`
+      url += `?origin=latlng:${lat},${lng}+|name:origin&destination=latlng:${lat},${lng}|name:destination&mode=driving&region=none)&coord_type=bd09ll`
+      break
     case 'citymapper':
       url = `${prefixes.citymapper}directions?endcoord=${latlng}`
 
