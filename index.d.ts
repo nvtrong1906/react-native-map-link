@@ -7,6 +7,7 @@ interface Options {
     sourceLatitude?: number
     sourceLongitude?: number
     alwaysIncludeGoogle?: boolean
+    alwaysIncludeBaidu?: boolean
     googleForceLatLon?: boolean
     googlePlaceId?: string
     title?: string

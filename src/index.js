@@ -90,7 +90,7 @@ export async function showLocation (options) {
       break
     case 'baidu-maps':
       url = prefixes['baidu-maps'] + `/map/direction`
-      url += `?origin=latlng:${lat},${lng}+|name:origin&destination=latlng:${lat},${lng}|name:destination&mode=driving&region=none)&coord_type=bd09ll`
+      url += `?origin=latlng:${lat},${lng}+|name:origin&destination=latlng:${lat},${lng}|name:destination&mode=driving&region=none&coord_type=bd09ll`
       break
     case 'citymapper':
       url = `${prefixes.citymapper}directions?endcoord=${latlng}`
