@@ -89,8 +89,8 @@ export async function showLocation (options) {
       url += (useSourceDestiny) ? `&saddr=${sourceLatLng}&daddr=${latlng}` : `&ll=${latlng}`
       break
     case 'baidu-maps':
-      url = prefixes['baidu-maps'] + `/map/direction`
-      url += `?origin=${lat},${lng}&destination=${lat},${lng}&mode=driving&region=none&coord_type=bd09ll`
+      url = prefixes['baidu-maps'] + `direction`
+      url += `?origin=latlng:${sourceLatLng}+|name:origin&destination=latlng:${lat},${lng}|name:destination&mode=driving&region=none&output=html&src=webapp.baidu.openAPIdemo`
       break
     case 'citymapper':
       url = `${prefixes.citymapper}directions?endcoord=${latlng}`
