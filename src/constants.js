@@ -10,7 +10,7 @@ export function generatePrefixes (options) {
   return {
     'apple-maps': isIOS ? 'http://maps.apple.com/' : 'applemaps://',
     'google-maps': prefixForGoogleMaps(options.alwaysIncludeGoogle),
-    'baidu-maps': 'baidumap://',
+    'baidu-maps': isIOS ? 'http://api.map.baidu.com/' : 'baidumap://',
     citymapper: 'citymapper://',
     uber: 'uber://',
     lyft: 'lyft://',
