@@ -27,7 +27,7 @@ export function generatePrefixes (options) {
 export function prefixForGoogleMaps (alwaysIncludeGoogle) {
   return isIOS && !alwaysIncludeGoogle
     ? 'comgooglemaps://'
-    : 'https://maps.google.com/'
+    : 'https://www.google.com/maps/search/'
 }
 
 export function generateTitles (titles) {
