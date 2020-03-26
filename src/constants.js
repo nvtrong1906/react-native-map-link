@@ -2,15 +2,15 @@
  * React Native Map Link
  */
 
-import { Platform } from 'react-native'
+import { Linking, Platform } from 'react-native'
 
 export const isIOS = Platform.OS === 'ios'
 
-export function generatePrefixes (options) {
+export async function generatePrefixes (options) {
   return {
     'apple-maps': isIOS ? 'http://maps.apple.com/' : 'applemaps://',
     'google-maps': prefixForGoogleMaps(options.alwaysIncludeGoogle),
-    'baidu-maps': isIOS ? 'http://api.map.baidu.com/' : 'baidumap://',
+    'baidu-maps': await prefixForBaiduMaps(),
     citymapper: 'citymapper://',
     uber: 'uber://',
     lyft: 'lyft://',
@@ -22,6 +22,11 @@ export function generatePrefixes (options) {
     'yandex-maps': 'yandexmaps://maps.yandex.ru/',
     kakaomap: 'kakaomap://'
   }
+}
+
+export  async function prefixForBaiduMaps () {
+  const canOpenBaidu = await Linking.canOpenURL(`baidumap://map/`);
+  return !!canOpenBaidu ? `baidumap://map/` : 'http://api.map.baidu.com/';
 }
 
 export function prefixForGoogleMaps (alwaysIncludeGoogle) {
