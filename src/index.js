@@ -28,7 +28,7 @@ import { askAppChoice, checkOptions } from './utils'
  * }} options
  */
 export async function showLocation (options) {
-  const prefixes = generatePrefixes(options)
+  const prefixes = await generatePrefixes(options)
   checkOptions(options, prefixes)
 
   let useSourceDestiny = false
@@ -81,8 +81,8 @@ export async function showLocation (options) {
       url += (useSourceDestiny) ? `&saddr=${sourceLatLng}&daddr=${latlng}` : `&ll=${latlng}`
       break
     case 'baidu-maps':
-      url = prefixes['baidu-maps'] + `direction`
-      url += `?origin=latlng:${sourceLatLng}+|name:origin&destination=latlng:${lat},${lng}|name:destination&mode=driving&region=none&output=html&src=webapp.baidu.openAPIdemo`
+      url = prefixes['baidu-maps'] + `marker`
+      url += `?location=${latlng}&title=Marker&src=webapp.baidu.openAPIdemo`
       break
     case 'citymapper':
       url = `${prefixes.citymapper}directions?endcoord=${latlng}`
