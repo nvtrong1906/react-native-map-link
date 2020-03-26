@@ -82,7 +82,7 @@ export async function showLocation (options) {
       break
     case 'baidu-maps':
       url = prefixes['baidu-maps'] + `marker`
-      url += `?location=${latlng}&title=Marker&src=webapp.baidu.openAPIdemo`
+      url += `?location=${latlng}&title=Marker&output=html&src=webapp.baidu.openAPIdemo`
       break
     case 'citymapper':
       url = `${prefixes.citymapper}directions?endcoord=${latlng}`
