@@ -13,6 +13,10 @@ import { askAppChoice, checkOptions } from './utils'
  * @param {{
  *     latitude: number | string,
  *     longitude: number | string,
+ *     gcjLat: number | string,
+ *     gcjLng: number | string,
+ *     wgsLat: number | string,
+ *     wgsLng: number | string,
  *     sourceLatitude: number | undefined | null,
  *     sourceLongitude: number | undefined | null,
  *     alwaysIncludeGoogle: boolean | undefined | null,
@@ -46,6 +50,12 @@ export async function showLocation (options) {
   const lat = parseFloat(options.latitude)
   const lng = parseFloat(options.longitude)
   const latlng = `${lat},${lng}`
+  const gcjLat = parseFloat(options.gcjLat)
+  const gcjLng = parseFloat(options.gcjLng)
+  const gcjLatLng = `${gcjLat},${gcjLng}`
+  const wgsLat = parseFloat(options.wgsLat)
+  const wgsLng = parseFloat(options.wgsLng)
+  const wgsLatlng = `${wgsLat},${wgsLng}`
   const title = options.title && options.title.length ? options.title : null
   const encodedTitle = encodeURIComponent(title)
   let app = options.app && options.app.length ? options.app : null
@@ -70,19 +80,22 @@ export async function showLocation (options) {
   switch (app) {
     case 'apple-maps':
       url = prefixes['apple-maps']
-      url = (useSourceDestiny) ? `${url}?saddr=${sourceLatLng}&daddr=${latlng}` : `${url}?ll=${latlng}`
+      url = (useSourceDestiny) ? `${url}?saddr=${sourceLatLng}&daddr=${wgsLatlng}` : `${url}?ll=${wgsLatlng}`
       url += `&q=${title ? `${encodedTitle}&address=${encodedTitle}` : 'Location'}`
+      console.log(`app`, url)
       break
     case 'google-maps':
       url = prefixes['google-maps']
-      url += `?query=${latlng}`
+      url += `?query=${gcjLatLng}`
       url += (isIOS) ? '&api=1' : ''
       url += (options.googlePlaceId) ? `&query_place_id=${options.googlePlaceId}` : ''
-      url += (useSourceDestiny) ? `&saddr=${sourceLatLng}&daddr=${latlng}` : `&ll=${latlng}`
+      url += (useSourceDestiny) ? `&saddr=${sourceLatLng}&daddr=${gcjLatLng}` : `&ll=${gcjLatLng}`
+      console.log(`google`, url)
       break
     case 'baidu-maps':
       url = prefixes['baidu-maps'] + `marker`
       url += `?location=${latlng}&title=Marker&output=html&src=webapp.baidu.openAPIdemo`
+      console.log(`baidu`, url)
       break
     case 'citymapper':
       url = `${prefixes.citymapper}directions?endcoord=${latlng}`
