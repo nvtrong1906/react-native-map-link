@@ -32,7 +32,7 @@ export  async function prefixForBaiduMaps () {
 export function prefixForGoogleMaps (alwaysIncludeGoogle) {
   return isIOS && !alwaysIncludeGoogle
     ? 'comgooglemaps://'
-    : 'https://www.google.com/maps/search/'
+    : 'https://maps.google.com/maps/search/'
 }
 
 export function generateTitles (titles) {
