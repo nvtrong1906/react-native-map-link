@@ -33,6 +33,9 @@ function isAppInstalled (app, prefixes) {
     if (!(app in prefixes)) {
       return resolve(false)
     }
+    if(app === 'baidu-maps') {
+      return resolve(true)
+    }
 
     Linking.canOpenURL(prefixes[app])
       .then((result) => {
