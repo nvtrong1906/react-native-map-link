@@ -87,7 +87,7 @@ export async function showLocation (options) {
     case 'google-maps':
       url = prefixes['google-maps']
       url += `?query=${gcjLatLng}`
-      url += (isIOS) ? '&api=1' : ''
+      url += '&api=1'
       url += (options.googlePlaceId) ? `&query_place_id=${options.googlePlaceId}` : ''
       url += (useSourceDestiny) ? `&saddr=${sourceLatLng}&daddr=${gcjLatLng}` : `&ll=${gcjLatLng}`
       console.log(`google`, url)
