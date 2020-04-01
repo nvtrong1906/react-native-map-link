@@ -94,7 +94,8 @@ export async function showLocation (options) {
       break
     case 'baidu-maps':
       url = prefixes['baidu-maps'] + `marker`
-      url += `?location=${latlng}&title=Marker&output=html&src=webapp.baidu.openAPIdemo`
+      url += `?location=${latlng}&title=Marker&content=content`
+      url += (isIOS) ? `&src=ios.baidu.openAPIdemo` : prefixes['baidu-maps'] === `baidumap://map/` ? `&src=andr.baidu.openAPIdemo` : `&output=html&src=webapp.baidu.openAPIdemo`
       console.log(`baidu`, url)
       break
     case 'citymapper':
