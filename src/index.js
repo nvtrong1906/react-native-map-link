@@ -84,12 +84,12 @@ export async function showLocation (options) {
       url += `&q=${title ? `${encodedTitle}&address=${encodedTitle}` : 'Location'}`
       console.log(`app`, url)
       break
-    case 'google-maps':
-      url = prefixes['google-maps']
-      url += `?query=${gcjLatLng}`
-      url += '&api=1'
-      url += (options.googlePlaceId) ? `&query_place_id=${options.googlePlaceId}` : ''
-      url += (useSourceDestiny) ? `&saddr=${sourceLatLng}&daddr=${gcjLatLng}` : `&ll=${gcjLatLng}`
+    //case 'google-maps':
+    //  url = prefixes['google-maps']
+    //  url += `?query=${gcjLatLng}`
+    //  url += '&api=1'
+    //  url += (options.googlePlaceId) ? `&query_place_id=${options.googlePlaceId}` : ''
+    //  url += (useSourceDestiny) ? `&saddr=${sourceLatLng}&daddr=${gcjLatLng}` : `&ll=${gcjLatLng}`
       console.log(`google`, url)
       break
     case 'baidu-maps':
